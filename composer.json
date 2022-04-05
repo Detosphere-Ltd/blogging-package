@@ -1,0 +1,33 @@
+{
+    "name": "detosphere/blog-package",
+    "description": "A simple package to manage blog posts across projects in a conventional way.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Elikem Seake-Kwawu",
+            "email": "skelikem@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Detosphere\\BlogPackage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "Detosphere\\BlogPackage\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Detosphere\\BlogPackage\\BlogPackageServiceProvider"
+            ]
+        }
+    }
+}
