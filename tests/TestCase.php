@@ -31,13 +31,21 @@ class TestCase extends \Orchestra\Testbench\TestCase
     }
 
     /**
-     * Load Service Providers
+     * Load Service Providers and perform environment setup
      *
      * @param $app
      * @return void
      */
     protected function getEnvironmentSetUp($app)
     {
-        // perform environment setup
+        // import the migration classes
+        include_once __DIR__ . '/../database/migrations/create_users_table.php.stub';
+        include_once __DIR__ . '/../database/migrations/create_posts_table.php.stub';
+        include_once __DIR__ . '/../database/migrations/create_blocks_table.php.stub';
+
+        // run the up() methods of migration classes. Order is important.
+        (new \CreateUsersTable)->up();
+        (new \CreatePostsTable)->up();
+        (new \CreateBlocksTable)->up();
     }
 }

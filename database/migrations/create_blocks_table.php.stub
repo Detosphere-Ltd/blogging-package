@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBlocksTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('blocks', function (Blueprint $table) {
+            $table->id();
+            $table->string('uuid')->unique();
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->integer('order');
+            $table->string('type');
+            // for now, content can be an Image SRC or text paragraph
+            // if it is an image, frontend will send the actual image file to be saved
+            // then we will save the src
+            $table->longtext('content');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('blocks');
+    }
+}

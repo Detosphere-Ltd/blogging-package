@@ -8,6 +8,9 @@
             "email": "skelikem@gmail.com"
         }
     ],
+    "require": {
+        "spatie/laravel-sluggable": "^2.6"
+    },
     "require-dev": {
         "orchestra/testbench": "^6.0",
         "phpunit/phpunit": "^9.5"
@@ -15,7 +18,8 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Detosphere\\BlogPackage\\": "src/"
+            "Detosphere\\BlogPackage\\": "src/",
+            "Detosphere\\BlogPackage\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
@@ -29,5 +33,9 @@
                 "Detosphere\\BlogPackage\\BlogPackageServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter"
     }
 }
