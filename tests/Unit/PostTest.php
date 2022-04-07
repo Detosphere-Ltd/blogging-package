@@ -18,6 +18,12 @@ class PostTest extends TestCase
         $this->assertEquals('Fake Title', $post->title);
     }
 
+    function test_a_post_has_content()
+    {
+        $post = Post::factory()->state(['content' => 'This will be JSON'])->create();
+        $this->assertEquals('This will be JSON', $post->content);
+    }
+
     function test_slug_is_generated_automatically()
     {
         $post = Post::factory()->create(['title' => 'Fake Title']);
@@ -36,6 +42,7 @@ class PostTest extends TestCase
         $author = User::factory()->create();
         $author->posts()->create([
             'title' => 'My first fake post',
+            'content' => 'this will be some json content',
         ]);
 
         $this->assertCount(1, Post::all());

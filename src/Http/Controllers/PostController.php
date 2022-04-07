@@ -1,6 +1,7 @@
 <?php
 
 namespace Detosphere\BlogPackage\Http\Controllers;
+use EditorJS\EditorJS;
 
 use Detosphere\BlogPackage\Models\Post;
 use Detosphere\BlogPackage\Transformers\PostTransformer;
@@ -43,24 +44,40 @@ class PostController extends Controller {
             abort (403, 'Only authenticated users can create new posts.');
         }
 
-        // Validation
-        request()->validate([
-            'title' => 'required'
-        ]);
+        try {
+            // Validation
+            request()->validate([
+                'title' => 'required',
+                'content' => 'required',
+            ]);
 
-        // Authenticated user is author
-        $author = auth()->user();
+            $data = request()->input('content');
 
-        $post = $author->posts()->create([
-            'title'     => request('title')
-        ]);
+            // configuration must be a JSON object
+            // https://github.com/editor-js/editorjs-php#configuration-file
+            $configuration = file_get_contents(config('blogpackage.editorjs_configuration'));
 
-        if (request()->expectsJson()) {
-            return response()->json([
-                'message' => 'Post created.',
-                'data' => $post
-            ], 201);
-        }
+            // Initialize Editor backend and validate structure
+            $editor = new EditorJS($data, $configuration);
+
+            dd($editor);
+            // Authenticated user is author
+            $author = auth()->user();
+
+            $post = $author->posts()->create([
+                'title'     => request('title'),
+                'content'     => request('content'),
+            ]);
+
+            if (request()->expectsJson()) {
+                return response()->json([
+                    'message' => 'Post created.',
+                    'data' => $post
+                ], 201);
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }        
     }
 
     public function show(Post $post)

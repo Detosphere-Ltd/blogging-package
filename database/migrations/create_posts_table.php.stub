@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('excerpt', 300)->nullable();
             $table->boolean('is_draft')->default(false); // true if draft, false if published
             $table->foreignId('member_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->json('content');
             $table->nullableMorphs('authorable'); // authored by
             $table->nullableMorphs('editorable'); // edited by
             $table->timestamp('scheduled_for')->nullable(); // the timestamp at which the post should automatically be published

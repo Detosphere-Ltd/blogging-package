@@ -46,4 +46,15 @@ return [
     |
     */
     'middleware' => ['api'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Configuration for Editor JS
+    |--------------------------------------------------------------------------
+    |
+    | Specify a path to a valid JSON file that will be used as the configuration for an EditorJS instance.
+    |
+    */
+    'editorjs_configuration' => env('BLOG_PACKAGE_EDITORJS_CONFIG', 'resources/files/editorjs-conf.json'),
+    // 'editorjs_configuration' => 'resources/files/editorjs-conf.json',
 ];
