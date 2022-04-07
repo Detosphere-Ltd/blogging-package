@@ -19,6 +19,15 @@ class Post extends Model
         return \Detosphere\BlogPackage\Database\Factories\PostFactory::new();
     }
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        '' => 'integer',
+    ];
+
     public function getUuidColumn(): string
     {
         return 'uuid';
