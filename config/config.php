@@ -14,35 +14,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Blocks table
-    |--------------------------------------------------------------------------
-    |
-    | The table where blocks will be stored. 
-    | Every post consists of multiple blocks.
-    | Each block has a specific type (e.g. image, text, video, etc.)
-    |
-    */
-    'blocks_table' => 'blocks',
-
-    /*
-    |--------------------------------------------------------------------------
     | Route Prefix
     |--------------------------------------------------------------------------
     |
     | Specify a prefix for the routes published by this package.
     | The resulting route will be something like: '.../users/posts/{id}/show/...'
+    | You can define custom prefixes in the boot() of App\Providers\RouteServiceProvider
+    | e.g. 'web', 'api', 'admin', etc
     |
     */
     'prefix' => 'users',
 
     /*
     |--------------------------------------------------------------------------
-    | Route Prefix
+    | Route Middleware
     |--------------------------------------------------------------------------
     |
-    | Specify a prefix for the routes published by this package.
-    | You can define custom prefixes in the boot() of App\Providers\RouteServiceProvider
-    | e.g. 'web', 'api', 'admin', etc
+    | Specify the middleware that should protect all the routes for the posts.
+    | If you're using a prefix configured in App\Providers\RouteServiceProvider,
+    | then you might have configured some middleware over there already. 
+    | Just modify the key to use those names.
     |
     */
     'middleware' => ['api'],
@@ -56,5 +47,4 @@ return [
     |
     */
     'editorjs_configuration' => env('BLOG_PACKAGE_EDITORJS_CONFIG', 'resources/files/editorjs-conf.json'),
-    // 'editorjs_configuration' => 'resources/files/editorjs-conf.json',
 ];

@@ -20,7 +20,6 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('excerpt', 300)->nullable();
             $table->boolean('is_draft')->default(false); // true if draft, false if published
-            $table->foreignId('member_id')->nullable()->constrained()->cascadeOnDelete();
             $table->json('content');
             $table->nullableMorphs('authorable'); // authored by
             $table->nullableMorphs('editorable'); // edited by
