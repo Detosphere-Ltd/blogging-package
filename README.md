@@ -5,8 +5,18 @@ This package enables you to easily implement blogging/content creation features 
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via composer.
 
+First, add the repository to your composer.json
+```json
+"repositories": [
+	{
+		"type": "vcs",
+		"url": "https://github.com/Detosphere-Ltd/blogging-package"
+	}
+]
+```
+Then...
 ```bash
 composer require :vendor_slug/:package_slug
 ```
@@ -14,14 +24,19 @@ composer require :vendor_slug/:package_slug
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="DetosphereLtd\BlogPackage\BlogPackageServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="DetosphereLtd\BlogPackage\BlogPackageServiceProvider" --tag="blogging-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --provider="DetosphereLtd\BlogPackage\BlogPackageServiceProvider" --tag="blogging-config"
+```
+
+Now you can also publish the file that validates the Editor.js request object.
+```bash
+php artisan vendor:publish --provider="DetosphereLtd\BlogPackage\BlogPackageServiceProvider" --tag="blogging-files"
 ```
 
 This is the contents of the published config file:
@@ -35,7 +50,7 @@ return [
 
 In your user model, or any other model that may be allowed to author posts, simply import the **HasPosts** trait.
 ```php
-use DetosphereLtd\BlogPackage\Traits\HasPosts;
+use Detosphere\BlogPackage\Traits\HasPosts;
 
 class Admin extends Model
 {
