@@ -34,17 +34,17 @@ class BlogPackageServiceProvider extends ServiceProvider
 			// Publish config
 			$this->publishes([
 				__DIR__ . '/../config/config.php' => config_path('blogpackage.php'),
-			], 'config');
+			], 'blogging-config');
 			// Publish assets
 			$this->publishes([
 				__DIR__.'/../resources/files' => storage_path('detosphere-ltd/blogpackage'),
-			], 'files');
+			], 'blogging-files');
 
 			// Export migrations
 			if (!class_exists('CreatePostsTable') && !class_exists('CreateBlocksTable')) {
 				$this->publishes([
 					__DIR__ . '/../database/migrations/create_posts_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_posts_table.php'),
-				], 'migrations');
+				], 'blogging-migrations');
 			} else {
 				// TO-DO: dump an error message to console...
 				// Possibly, the user has defined those classes already.
