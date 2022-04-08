@@ -1,8 +1,8 @@
 <?php
 
-namespace Detosphere\BlogPackage\Traits;
+namespace DetosphereLtd\BlogPackage\Traits;
 
-use Detosphere\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Models\Post;
 
 trait HasPosts
 {

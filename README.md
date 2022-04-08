@@ -14,7 +14,7 @@ composer require :vendor_slug/:package_slug
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Detosphere\BlogPackage\BlogPackageServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="DetosphereLtd\BlogPackage\BlogPackageServiceProvider" --tag="migrations"
 php artisan migrate
 ```
 
@@ -35,7 +35,7 @@ return [
 
 In your user model, or any other model that may be allowed to author posts, simply import the **HasPosts** trait.
 ```php
-use Detosphere\BlogPackage\Traits\HasPosts;
+use DetosphereLtd\BlogPackage\Traits\HasPosts;
 
 class Admin extends Model
 {

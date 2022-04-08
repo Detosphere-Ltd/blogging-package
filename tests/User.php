@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage\Tests;
+namespace DetosphereLtd\BlogPackage\Tests;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Detosphere\BlogPackage\Traits\HasPosts;
+use DetosphereLtd\BlogPackage\Traits\HasPosts;
 
 /**
  * THIS CLASS IS STRICTLY FOR TESTING ONLY

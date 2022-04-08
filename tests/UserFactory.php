@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage\Tests;
+namespace DetosphereLtd\BlogPackage\Tests;
 
 use Orchestra\Testbench\Factories\UserFactory as TestbenchUserFactory;
 

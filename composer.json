@@ -1,5 +1,5 @@
 {
-    "name": "detosphere/blog-package",
+    "name": "detosphere-ltd/blog-package",
     "description": "A simple package to manage blog posts across projects in a conventional way.",
     "type": "library",
     "authors": [
@@ -20,19 +20,19 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Detosphere\\BlogPackage\\": "src/",
-            "Detosphere\\BlogPackage\\Database\\Factories\\": "database/factories"
+            "DetosphereLtd\\BlogPackage\\": "src/",
+            "DetosphereLtd\\BlogPackage\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-          "Detosphere\\BlogPackage\\Tests\\": "tests"
+          "DetosphereLtd\\BlogPackage\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Detosphere\\BlogPackage\\BlogPackageServiceProvider"
+                "DetosphereLtd\\BlogPackage\\BlogPackageServiceProvider"
             ]
         }
     },

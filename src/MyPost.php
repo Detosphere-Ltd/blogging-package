@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage;
+namespace DetosphereLtd\BlogPackage;
 
 class MyPost {
     public function show()

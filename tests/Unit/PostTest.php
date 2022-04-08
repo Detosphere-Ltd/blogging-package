@@ -1,11 +1,11 @@
 <?php
 
-namespace Detosphere\BlogPackage\Tests\Unit;
+namespace DetosphereLtd\BlogPackage\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Detosphere\BlogPackage\Tests\TestCase;
-use Detosphere\BlogPackage\Models\Post;
-use Detosphere\BlogPackage\Tests\User;
+use DetosphereLtd\BlogPackage\Tests\TestCase;
+use DetosphereLtd\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Tests\User;
 use Illuminate\Support\Str;
 
 class PostTest extends TestCase
@@ -33,7 +33,7 @@ class PostTest extends TestCase
     function test_a_post_has_an_author()
     {
         $post = Post::factory()->author()->create();
-        $this->assertEquals('Detosphere\BlogPackage\Tests\User', $post->authorable_type);
+        $this->assertEquals('DetosphereLtd\BlogPackage\Tests\User', $post->authorable_type);
         $this->assertEquals(1, $post->authorable_id);
     }
 

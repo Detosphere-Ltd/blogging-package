@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage;
+namespace DetosphereLtd\BlogPackage;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +37,7 @@ class BlogPackageServiceProvider extends ServiceProvider
 			], 'config');
 			// Publish assets
 			$this->publishes([
-				__DIR__.'/../resources/files' => storage_path('detosphere/blogpackage'),
+				__DIR__.'/../resources/files' => storage_path('detosphere-ltd/blogpackage'),
 			], 'files');
 
 			// Export migrations

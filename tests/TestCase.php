@@ -1,8 +1,8 @@
 <?php
 
-namespace Detosphere\BlogPackage\Tests;
+namespace DetosphereLtd\BlogPackage\Tests;
 
-use Detosphere\BlogPackage\BlogPackageServiceProvider;
+use DetosphereLtd\BlogPackage\BlogPackageServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {

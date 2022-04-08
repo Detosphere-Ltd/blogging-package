@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage\Traits;
+namespace DetosphereLtd\BlogPackage\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;

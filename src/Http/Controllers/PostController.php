@@ -1,10 +1,10 @@
 <?php
 
-namespace Detosphere\BlogPackage\Http\Controllers;
+namespace DetosphereLtd\BlogPackage\Http\Controllers;
 use EditorJS\EditorJS;
 
-use Detosphere\BlogPackage\Models\Post;
-use Detosphere\BlogPackage\Transformers\PostTransformer;
+use DetosphereLtd\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Transformers\PostTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use Illuminate\Support\Arr;
 use Illuminate\Pipeline\Pipeline;
@@ -60,7 +60,8 @@ class PostController extends Controller {
             // Initialize Editor backend and validate structure
             $editor = new EditorJS($data, $configuration);
 
-            dd($editor);
+            // dd($editor->getBlocks());
+
             // Authenticated user is author
             $author = auth()->user();
 
@@ -76,7 +77,7 @@ class PostController extends Controller {
                 ], 201);
             }
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }        
     }
 

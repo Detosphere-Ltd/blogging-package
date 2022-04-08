@@ -1,11 +1,11 @@
 <?php
 
-namespace Detosphere\BlogPackage\Tests\Feature;
+namespace DetosphereLtd\BlogPackage\Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Detosphere\BlogPackage\Models\Post;
-use Detosphere\BlogPackage\Tests\TestCase;
-use Detosphere\BlogPackage\Tests\User;
+use DetosphereLtd\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Tests\TestCase;
+use DetosphereLtd\BlogPackage\Tests\User;
 use Illuminate\Testing\Fluent\AssertableJson;
 
 class GetPostsTest extends TestCase

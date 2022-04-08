@@ -1,8 +1,8 @@
 <?php
 
-namespace Detosphere\BlogPackage\Transformers;
+namespace DetosphereLtd\BlogPackage\Transformers;
 
-use Detosphere\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Models\Post;
 use League\Fractal\TransformerAbstract;
 
 class PostTransformer extends TransformerAbstract

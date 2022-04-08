@@ -1,6 +1,6 @@
 <?php
 
-namespace Detosphere\BlogPackage\Http\Controllers;
+namespace DetosphereLtd\BlogPackage\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

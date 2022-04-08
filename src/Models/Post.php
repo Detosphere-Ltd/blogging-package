@@ -1,10 +1,10 @@
 <?php
 
-namespace Detosphere\BlogPackage\Models;
+namespace DetosphereLtd\BlogPackage\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Detosphere\BlogPackage\Traits\HasUuid;
+use DetosphereLtd\BlogPackage\Traits\HasUuid;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -16,7 +16,7 @@ class Post extends Model
 
     protected static function newFactory()
     {
-        return \Detosphere\BlogPackage\Database\Factories\PostFactory::new();
+        return \DetosphereLtd\BlogPackage\Database\Factories\PostFactory::new();
     }
 
     /**
@@ -25,7 +25,7 @@ class Post extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        '' => 'integer',
+        'is_draft' => 'boolean',
     ];
 
     public function getUuidColumn(): string

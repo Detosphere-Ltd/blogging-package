@@ -1,9 +1,9 @@
 <?php
 
-namespace Detosphere\BlogPackage\Database\Factories;
+namespace DetosphereLtd\BlogPackage\Database\Factories;
 
-use Detosphere\BlogPackage\Models\Post;
-use Detosphere\BlogPackage\Tests\User;
+use DetosphereLtd\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Tests\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory

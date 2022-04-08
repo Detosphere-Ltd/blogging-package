@@ -2,7 +2,11 @@
     "tools" : {
         "header" : {
             "text" : {
-                "type" : "string"
+                "type" : "string",
+                "required" : false
+            },
+            "level" : {
+                "type" : "int"
             }
         }
     }
