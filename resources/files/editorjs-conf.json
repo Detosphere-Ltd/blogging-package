@@ -1,12 +1,36 @@
 {
-    "tools" : {
-        "header" : {
-            "text" : {
-                "type" : "string",
-                "required" : false
+    "tools": {
+        "header": {
+            "text": {
+                "type": "string",
+                "required": true
             },
-            "level" : {
-                "type" : "int"
+            "level": {
+                "type": "int"
+            }
+        },
+        "paragraph": {
+            "text": {
+                "type": "string",
+                "required": true
+            }
+        },
+        "list": {
+            "style": {
+                "type": "string",
+                "canBeOnly": [
+                    "ordered",
+                    "unordered"
+                ]
+            },
+            "items": {
+                "type": "array",
+                "data": {
+                    "-": {
+                        "type": "string",
+                        "allowedTags": "i,b,u"
+                    }
+                }
             }
         }
     }
