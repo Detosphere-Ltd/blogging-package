@@ -27,6 +27,7 @@ class PostTransformer extends TransformerAbstract
             'slug' => $post->slug,
             'excerpt' => $post->excerpt,
             'is_draft' => $post->is_draft,
+            'content' => $post->content,
             'scheduled_for' => $post->scheduled_for,
             'published_at' => $post->published_at,
             'created_at' => $post->created_at,

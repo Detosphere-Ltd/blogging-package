@@ -14,15 +14,36 @@ class BlogPackageServiceProvider extends ServiceProvider
 
 	protected function registerRoutes()
 	{
-		Route::group($this->routeConfiguration(), function () {
-			$this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
-		});
+		// if we only have a single prefix being set by the user as a string, then return a single set
+		// but if user specifies multiple prefixes, then return multiple sets
+		$prefixes = gettype(config('blogpackage.prefix'));
+		$type = gettype($prefixes);
+
+		switch ($type) {
+			case 'string':
+				Route::group($this->routeConfiguration(), function () {
+					$this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+				});
+				break;
+			
+			case 'array':
+				foreach($prefixes as $prefix) {
+					Route::group($this->routeConfiguration($prefix), function () {
+						$this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
+					});
+				}
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 	}
 
-	protected function routeConfiguration()
+	protected function routeConfiguration($prefix = null)
 	{
 		return [
-			'prefix' => config('blogpackage.prefix'),
+			'prefix' => $prefix === null ? config('blogpackage.prefix') : $prefix,
 			'middleware' => config('blogpackage.middleware'),
 		];
 	}

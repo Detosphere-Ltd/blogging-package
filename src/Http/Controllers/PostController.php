@@ -1,9 +1,12 @@
 <?php
 
 namespace DetosphereLtd\BlogPackage\Http\Controllers;
+
+use Carbon\Carbon;
 use EditorJS\EditorJS;
 
 use DetosphereLtd\BlogPackage\Models\Post;
+use DetosphereLtd\BlogPackage\Rules\ProperDateTime;
 use DetosphereLtd\BlogPackage\Transformers\PostTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use Illuminate\Support\Arr;
@@ -48,6 +51,14 @@ class PostController extends Controller {
             // Validation
             request()->validate([
                 'title' => 'required',
+                'excerpt' => 'string|nullable|max:300',
+                'publish' => 'required|boolean',
+                // TODO: validate the date
+                'publishing_at' => [
+                    'required_if:publish,true',
+                    new ProperDateTime,
+                    // TODO write a rule to ensure that date is after or equal to now. Cant use the default laravel rule because it doesnt support UNIX
+                ],
                 'content' => 'required',
             ]);
 
@@ -62,18 +73,40 @@ class PostController extends Controller {
 
             // dd($editor->getBlocks());
 
+            $scheduledFor = request()->has('publishing_at') ? Carbon::parse(request('publishing_at')) : null;
+            $publishedAt = null;
+
             // Authenticated user is author
             $author = auth()->user();
+            
+            // if publish is true and scheduledFor is less than now, then set published_at
+            if ($scheduledFor !== null) {
+                // dd(request()->publish);
+                if (request()->publish == true && $scheduledFor->lessThanOrEqualTo(now())) {
+                    $publishedAt = $scheduledFor;
+                    $scheduledFor = null;
+                }
+            }
+
+            // a draft is any unpublished document
+            if ($scheduledFor === null && $publishedAt === null) {
+                $isDraft = true;
+            } else {
+                $isDraft = false;
+            }
 
             $post = $author->posts()->create([
                 'title'     => request('title'),
                 'content'     => request('content'),
+                'scheduled_for' => $scheduledFor,
+                'published_at' => $publishedAt,
+                'is_draft' => $isDraft,
             ]);
 
             if (request()->expectsJson()) {
                 return response()->json([
                     'message' => 'Post created.',
-                    'data' => $post
+                    'data' => fractal()->item($post, new PostTransformer)
                 ], 201);
             }
         } catch (\Throwable $th) {
