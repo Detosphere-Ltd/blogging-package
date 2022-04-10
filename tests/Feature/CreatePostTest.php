@@ -94,7 +94,7 @@ class CreatePostTest extends TestCase
             'title' => $postToCreate->title,
             'publish' => true,
             'publishing_at' => $timeToPublishAt,
-            'content' => $postToCreate->content
+            'content' => json_decode($postToCreate->content)
         ]);
 
         $response->assertCreated()

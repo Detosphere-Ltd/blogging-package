@@ -62,7 +62,7 @@ class PostController extends Controller {
                 'content' => 'required',
             ]);
 
-            $data = request()->input('content');
+            $data = json_encode(request()->input('content'));
 
             // configuration must be a JSON object
             // https://github.com/editor-js/editorjs-php#configuration-file
@@ -97,7 +97,7 @@ class PostController extends Controller {
 
             $post = $author->posts()->create([
                 'title'     => request('title'),
-                'content'     => request('content'),
+                'content'     => $data,
                 'scheduled_for' => $scheduledFor,
                 'published_at' => $publishedAt,
                 'is_draft' => $isDraft,
