@@ -31,7 +31,7 @@ class PostTransformer extends TransformerAbstract
             'scheduled_for' => $post->scheduled_for,
             'published_at' => $post->published_at,
             'created_at' => $post->created_at,
-            'udpated_at' => $post->updated_at,
+            'updated_at' => $post->updated_at,
         ];
     }
 }

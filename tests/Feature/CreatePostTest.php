@@ -30,7 +30,7 @@ class CreatePostTest extends TestCase
         $response = $this->actingAs($author)->postJson(route('posts.store'), [
             'title' => $postToCreate->title,
             'publish' => false,
-            'content' => $postToCreate->content
+            'content' => json_decode($postToCreate->content)
         ]);
 
         $response->assertCreated()
@@ -159,7 +159,7 @@ class CreatePostTest extends TestCase
             'title' => $postToCreate->title,
             'publish' => true,
             'publishing_at' => $timeToPublishAt,
-            'content' => $postToCreate->content
+            'content' => json_decode($postToCreate->content)
         ]);
 
         $response->assertCreated()
